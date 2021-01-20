@@ -25,3 +25,19 @@ library("RICdata")
 |ENSG2category               |ENSG annotation with GO categories from  mRNAinteractomeHeLa                          |
 |miniProtFeatures           |Reduced protein feature annotation from RBDmap                             |
 |Index           |Index annotation of amino acid 4kmer length                                     |
+
+
+### Data loading and information
+
+Load data is loaded into `R` by typing
+```r
+data("WCLpeptides.raw")
+```
+To get more information about each dataset, see its manual page
+
+```r
+?WCLpeptides.raw  
+## or
+help("WCLpeptides.raw")
+```
+
