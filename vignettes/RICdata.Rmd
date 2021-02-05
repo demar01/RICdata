@@ -15,10 +15,10 @@ bibliography: ["RICdata.bib"]
 
 ```{r required packages, echo = FALSE, warning=FALSE, results="hide"}
 suppressPackageStartupMessages({
-  library("BiocStyle")
-  library("RICdata")
-  library(magrittr)
-  library(tidyverse)
+    library("BiocStyle")
+    library("RICdata")
+    library(magrittr)
+    library(tidyverse)
 })
 ```
 
