@@ -81,5 +81,3 @@
 #' @source RBDmap
 #'
 "miniProtFeatures"
-
-

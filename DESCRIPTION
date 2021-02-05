@@ -2,19 +2,29 @@ Package: RICdata
 Type: Package
 Title: Data accompanying the RIC package
 Version: 0.99.0
-Authors@R: c(
-    person("Maria", "Dermit",
-    email = "maria.dermit@qmul.ac.uk",
-    comment = c(ORCID = "0000-0002-6287-8367"),
-    role = c("aut", "cre")))
-Maintainer: Maria Dermit <maria.dermit@qmul.ac.uk>
+Authors@R: 
+    c(person(given = "Maria",
+           family = "Dermit",
+           role = c("aut","cre"),
+           comment = c(ORCID = "0000-0002-6287-8367"),
+           email = "maria.dermit@qmul.ac.uk"),
+      person(given = "Ni",
+           family = "Shuai",
+           role = "aut",
+           email = "nishuai@yahoo.com")
+    )
 Description: Mass-spectrometry based RNA bound proteins captured by RNA oligo dT 
       experiment as well as lysates of cells infected by Sindbis virus in a time
-	     course  infection experiment from Garcia-Moreno et al. 2019.
-License: GPL-2
+	     course  infection experiment from Garcia-Moreno et al. 2019. Data is used
+	     for examples in other packages.
+License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
+Depends: R(>= 4.1.0)
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    covr
 Config/testthat/edition: 3
+biocViews: ExperimentData, Homo_sapiens_Data, MassSpectrometryData  
+BugReports: https://github.com/demar01/RICdata/issues

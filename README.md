@@ -1,5 +1,11 @@
 # RICdata
 
+  <!-- badges: start -->
+  [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+  [![BioC status](http://www.bioconductor.org/shields/build/release/bioc/RICdata.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/RICdata)
+  [![Codecov test coverage](https://codecov.io/gh/demar01/RICdata/branch/main/graph/badge.svg)](https://codecov.io/gh/demar01/RICdata?branch=main)
+  <!-- badges: end -->
+  
 ##  `RICdata` package
 
 `RICdata` is a experimental package that contains the data for RIC analysis.
