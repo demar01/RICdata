@@ -3,4 +3,4 @@
 import(Biostrings)
 import(magrittr)
 import(tidyverse)
-importFrom(utils,packageVersio)
+importFrom(utils,packageVersion)
