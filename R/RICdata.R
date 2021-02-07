@@ -5,7 +5,6 @@
 ##'
 ##' @aliases Experimental package RIC RICdata
 ##'
-##' @import QFeatures
 ##' @import Biostrings
 ##' @import magrittr
 ##' @import tidyverse

@@ -1,6 +1,4 @@
-##' @importFrom utils packageVersion
-##' @import QFeatures
-##' @import QFeatures
+##' @importFrom utils packageVersio
 .onAttach <- function(libname, pkgname) {
   msg <- paste0("\nThis is RICdata version ",
                 packageVersion("RICdata"))

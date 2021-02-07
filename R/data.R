@@ -35,7 +35,6 @@
 #' @references
 #'
 #' Garcia-Moreno et al. System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection. Molecular Cell  2019 Apr 4;74:196-211.e11
-#' @import QFeatures
 #'
 NULL
 
