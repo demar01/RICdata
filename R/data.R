@@ -19,7 +19,8 @@
 #' System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection.
 #' Molecular Cell  2019 Apr 4;74:196-211.e11
 #' \href{https://pubmed.ncbi.nlm.nih.gov/30799147/}{10.1016/j.molcel.2019.01.017}.
-#'
+#' @import tidyverse
+#' @import magrittr
 "WCLpeptides.raw"
 
 #' QWCLpeptidesfiltered_clean
@@ -34,6 +35,7 @@
 #' @references
 #'
 #' Garcia-Moreno et al. System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection. Molecular Cell  2019 Apr 4;74:196-211.e11
+#' @import QFeatures
 #'
 NULL
 
@@ -83,7 +85,7 @@ NULL
 #' \describe{
 #'   \item{source}{Annotation source}
 #'   \item{gene_id}{ENSG gene id}
-#'   \item{Category}{CAtegory annotation}
+#'   \item{Category}{Category annotation}
 #'   \item{Name}{ENSG name}
 #' }
 #' @return A character.
@@ -96,6 +98,7 @@ NULL
 #' @format An array with 1490269 entries:
 #' @return An array .
 #' @source RBPmapHeLa
+#' @import Biostrings
 #'
 "Index"
 

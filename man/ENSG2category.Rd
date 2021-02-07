@@ -10,7 +10,7 @@ A character with 1490269 rows and 4 variables:
 \describe{
 \item{source}{Annotation source}
 \item{gene_id}{ENSG gene id}
-\item{Category}{CAtegory annotation}
+\item{Category}{Category annotation}
 \item{Name}{ENSG name}
 }
 }
