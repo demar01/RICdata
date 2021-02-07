@@ -21,6 +21,7 @@
 #' \href{https://pubmed.ncbi.nlm.nih.gov/30799147/}{10.1016/j.molcel.2019.01.017}.
 #' @import tidyverse
 #' @import magrittr
+#' @import QFeatures
 "WCLpeptides.raw"
 
 #' QWCLpeptidesfiltered_clean

@@ -21,6 +21,7 @@ bibliography: ["RICdata.bib"]
 suppressPackageStartupMessages({
     library("BiocStyle")
     library("RICdata")
+    library(QFeatures)
     library(magrittr)
     library(tidyverse)
 })
@@ -62,6 +63,66 @@ colnames(WCLpeptides.raw)[j]
 i <- str_which(colnames(RICpeptides.raw),str_c("Intensity.[H|M|L].",
                                                collapse="|"))
 colnames(RICpeptides.raw)[i]
+
+```
+
+We can convert tabular data into a QFeatures object:
+```{r}
+QWCLpeptides <- readQFeatures(WCLpeptidesfilepath, ecol = j, sep = "\t",
+                              name = "peptides", fnames = "Sequence")
+QRICpeptides <- readQFeatures(RICpeptidesfilepath, ecol = i, sep = "\t", 
+                              name = "peptides", fnames = "Sequence")
+```
+
+
+# Processing QFeatures
+
+## QFeature annotation
+
+We can annotate with metadata our QFeatures objects. This is important as it 
+defines the order and sample names of experiments. 
+```{r experiment-QFeatures}
+sample_names=c('hour18','hour4','mock')
+QWCLpeptides$group <- paste(sample_names,rep(1:3,each=3),sep='_')
+QWCLpeptides$sample <- rep(1:3, each=3)
+colData(QWCLpeptides)
+
+QRICpeptides$group <-  paste(sample_names,rep(1:3,each=3),sep='_')
+QRICpeptides$sample <- rep(1:3, each=3)
+colData(QRICpeptides)
+
+```
+
+## QFeature filtering
+
+We filter for contaminant proteins  and decoy database hits which are indicated
+by "+" in the columns "Potential.contaminants" and "Reverse" respectively using
+QFeatures-filtering functions.
+```{r filtering-data}
+QWCLpeptidesfiltered <- QWCLpeptides %>% 
+    filterFeatures(~ Reverse == "") %>%
+    filterFeatures(~ Potential.contaminant == "")
+
+QRICpeptidesfiltered <- QRICpeptides %>% 
+    filterFeatures(~ Reverse == "") %>%
+    filterFeatures(~ Potential.contaminant == "")
+
+```
+
+## Removing non-needed features
+We can retain only rowDatanames of interest. To do this we can use the 
+`QFeatures::selectRowData` function.
+```{r QFeatures-selectRowData}
+ 
+rowDataNames(QWCLpeptidesfiltered)[["peptides"]] %>% length() 
+rowDataNames(QRICpeptidesfiltered)[["peptides"]] %>% length() 
+ 
+rowvars <- c("Sequence", "Proteins", "Leading.razor.protein")
+QWCLpeptidesfiltered_clean <- selectRowData(QWCLpeptidesfiltered, rowvars)
+QRICpeptidesfiltered_clean <- selectRowData(QRICpeptidesfiltered, rowvars)
+
+rowDataNames(QWCLpeptidesfiltered_clean)[["peptides"]] %>% length() 
+rowDataNames(QRICpeptidesfiltered_clean)[["peptides"]] %>% length() 
 ```
 
 # Annotation data overview

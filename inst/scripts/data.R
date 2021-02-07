@@ -20,3 +20,5 @@ ratiosric = "normalized."
 columns_ric <- colnames(RICpeptides.raw)[grep(ratiosric, colnames(RICpeptides.raw))]
 usethis::use_data(RICpeptides.raw , overwrite = TRUE)
 
+usethis::use_data(QWCLpeptidesfiltered_clean , overwrite = TRUE)
+usethis::use_data(QRICpeptidesfiltered_clean , overwrite = TRUE)
