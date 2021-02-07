@@ -35,7 +35,8 @@ Suggests:
     rmarkdown (>= 0.3.3)
 Imports:
     tidyverse,
-    magrittr
+    magrittr,
+    QFeatures
 VignetteBuilder: knitr
 biocViews: ExperimentData, Homo_sapiens_Data, MassSpectrometryData, SequencingData
 BugReports: https://github.com/demar01/RICdata/issues

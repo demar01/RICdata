@@ -21,6 +21,7 @@ bibliography: ["RICdata.bib"]
 suppressPackageStartupMessages({
     library("BiocStyle")
     library("RICdata")
+    library(QFeatures)
     library(magrittr)
     library(tidyverse)
 })
@@ -41,6 +42,10 @@ total of 9 oligo DT capture and total cell lysate samples originated from mass
 spectrometry proteomics SILAC quantitative experiments [@Garcia-Moreno:2019].
 
 ```{r}
+# Path to tabular data
+WCLpeptidesfilepath<- system.file("extdata","WCL_peptides.txt", package = "RICdata")
+RICpeptidesfilepath<- system.file( "extdata", "RIC_peptides.txt", package = "RICdata")
+
 data("WCLpeptides.raw")
 dim(WCLpeptides.raw)
 data("RICpeptides.raw")
@@ -55,15 +60,78 @@ j <- str_which(colnames(WCLpeptides.raw),str_c(c("Intensity.((\\D)).18_M_4",
                                               collapse="|"))
 colnames(WCLpeptides.raw)[j]
 
-i <- str_which(colnames(RICpeptides.raw),str_c("Intensity.[H|M|L].", collapse="|"))
+i <- str_which(colnames(RICpeptides.raw),str_c("Intensity.[H|M|L].",
+                                               collapse="|"))
 colnames(RICpeptides.raw)[i]
+```
+
+## Converting tabular data into QFeatures
+
+```{r}
+QWCLpeptides <- readQFeatures(WCLpeptidesfilepath, ecol = j, sep = "\t", 
+                              name = "peptides", fnames = "Sequence")
+QRICpeptides <- readQFeatures(RICpeptidesfilepath, ecol = i, sep = "\t", 
+                              name = "peptides", fnames = "Sequence")
+```
+`readQFeatures` can take either file path where your` `peptides.txt` lives or
+the tabular data already read.  We need to detect the position where 
+__Intensity__ columns are. Note that the authors of RIC experiment gave 
+different names to the oligo(dT) capture (RIC) and  WCL experiments, so we need 
+to have one set of indexes for `WCL` experiment (j) and one set of indexes for
+`RIC` experiment (i).
+
+## QFeatures annotation
+We can annotate with metadata our QFeatures objects. This is important as it 
+defines the order and sample names of experiments. 
+
+```{r experiment-QFeatures}
+sample_names=c('hour18','hour4','mock')
+QWCLpeptides$group <- paste(sample_names,rep(1:3,each=3),sep='_')
+QWCLpeptides$sample <- rep(1:3, each=3)
+colData(QWCLpeptides)
+
+QRICpeptides$group <-  paste(sample_names,rep(1:3,each=3),sep='_')
+QRICpeptides$sample <- rep(1:3, each=3)
+colData(QRICpeptides)
+```
+
+## QFeatures filtering
+
+We filter for contaminant proteins  and decoy database hits which are indicated
+by "+" in the columns "Potential.contaminants" and "Reverse" respectively using
+QFeatures-filtering functions.
+```{r filtering-data}
+QWCLpeptidesfiltered <- QWCLpeptides %>% 
+    filterFeatures(~ Reverse == "") %>%
+    filterFeatures(~ Potential.contaminant == "")
+
+QRICpeptidesfiltered <- QRICpeptides %>% 
+    filterFeatures(~ Reverse == "") %>%
+    filterFeatures(~ Potential.contaminant == "")
+
+```
+
+## Removing unnecessary features
+We can retain only rowDatanames of interest. To do this we can use the 
+`QFeatures::selectRowData` function.
+```{r QFeatures-selectRowData}
+ 
+rowDataNames(QWCLpeptidesfiltered)[["peptides"]] %>% length() 
+rowDataNames(QRICpeptidesfiltered)[["peptides"]] %>% length() 
+ 
+rowvars <- c("Sequence", "Proteins", "Leading.razor.protein")
+QWCLpeptidesfiltered_clean <- selectRowData(QWCLpeptidesfiltered, rowvars)
+QRICpeptidesfiltered_clean <- selectRowData(QRICpeptidesfiltered, rowvars)
+
+rowDataNames(QWCLpeptidesfiltered_clean)[["peptides"]] %>% length() 
+rowDataNames(QRICpeptidesfiltered_clean)[["peptides"]] %>% length() 
 ```
 
 # Annotation data overview
 
-The package also contains a reduced version of data contained in [ProtFeatures](https://www.huber.embl.de/users/befische/RBDmap/Rpackage/RBDmapHeLa.pdf)
-[@Castello:2016]. This is  called `miniProtFeatures` and contains the sequence 
-information of the proteins. 
+`RICdata` package also contains a reduced version of data contained in [ProtFeatures](https://www.huber.embl.de/users/befische/RBDmap/Rpackage/RBDmapHeLa.pdf)
+[@Castello:2016]. This object is called `miniProtFeatures` and contains proteins 
+sequence information. 
 miniProtFeature is a list with the following objects:
 
 - _ProtSeq_  a AAStringSet object of length 69025 with protein sequences.
@@ -77,7 +145,7 @@ head(miniProtFeatures$GeneName)
 head(miniProtFeatures$Symbol)
 ```
 
-GO annotation provided [here](https://www.huber.embl.de/users/befische/mRNAinteractome/Rpackage/index.html)is included as `ENSG2category` object. 
+GO annotation provided in [mRNAinteractome](https://www.huber.embl.de/users/befische/mRNAinteractome/Rpackage/index.html) is included and called `ENSG2category`. 
 
 ```{r}
 data(ENSG2category)
