@@ -21,6 +21,7 @@ bibliography: ["RICdata.bib"]
 suppressPackageStartupMessages({
     library("BiocStyle")
     library("RICdata")
+    library(QFeatures)
     library(magrittr)
     library(tidyverse)
 })
