@@ -32,11 +32,11 @@ Suggests:
     testthat (>= 3.0.0),
     BiocStyle,
     knitr (>= 1.6), 
-    rmarkdown (>= 0.3.3)
+    rmarkdown (>= 0.3.3),
+    QFeatures
 Imports:
     tidyverse,
     magrittr,
-    QFeatures
 VignetteBuilder: knitr
 biocViews: ExperimentData, Homo_sapiens_Data, MassSpectrometryData, SequencingData
 BugReports: https://github.com/demar01/RICdata/issues
