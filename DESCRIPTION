@@ -27,7 +27,7 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Depends: R (>= 4.1.0), Biostrings, QFeatures (>= 1.1.1)
+Depends: R (>= 4.1.0), Biostrings, 
 Suggests: 
     testthat (>= 3.0.0),
     BiocStyle,
@@ -35,7 +35,8 @@ Suggests:
     rmarkdown (>= 0.3.3)
 Imports:
     tidyverse,
-    magrittr
+    magrittr,
+    QFeatures
 VignetteBuilder: knitr
 biocViews: ExperimentData, Homo_sapiens_Data, MassSpectrometryData, SequencingData
 BugReports: https://github.com/demar01/RICdata/issues
