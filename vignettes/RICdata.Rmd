@@ -65,68 +65,6 @@ i <- str_which(colnames(RICpeptides.raw),str_c("Intensity.[H|M|L].",
 colnames(RICpeptides.raw)[i]
 ```
 
-## Converting tabular data into QFeatures
-
-```{r}
-QWCLpeptides <- readQFeatures(WCLpeptidesfilepath, ecol = j, sep = "\t", 
-                              name = "peptides", fnames = "Sequence")
-QRICpeptides <- readQFeatures(RICpeptidesfilepath, ecol = i, sep = "\t", 
-                              name = "peptides", fnames = "Sequence")
-```
-`readQFeatures` can take either file path where your` `peptides.txt` lives or
-the tabular data already read.  We need to detect the position where 
-__Intensity__ columns are. Note that the authors of RIC experiment gave 
-different names to the oligo(dT) capture (RIC) and  WCL experiments, so we need 
-to have one set of indexes for `WCL` experiment (j) and one set of indexes for
-`RIC` experiment (i).
-
-## QFeatures annotation
-We can annotate with metadata our QFeatures objects. This is important as it 
-defines the order and sample names of experiments. 
-
-```{r experiment-QFeatures}
-sample_names=c('hour18','hour4','mock')
-QWCLpeptides$group <- paste(sample_names,rep(1:3,each=3),sep='_')
-QWCLpeptides$sample <- rep(1:3, each=3)
-colData(QWCLpeptides)
-
-QRICpeptides$group <-  paste(sample_names,rep(1:3,each=3),sep='_')
-QRICpeptides$sample <- rep(1:3, each=3)
-colData(QRICpeptides)
-```
-
-## QFeatures filtering
-
-We filter for contaminant proteins  and decoy database hits which are indicated
-by "+" in the columns "Potential.contaminants" and "Reverse" respectively using
-QFeatures-filtering functions.
-```{r filtering-data}
-QWCLpeptidesfiltered <- QWCLpeptides %>% 
-    filterFeatures(~ Reverse == "") %>%
-    filterFeatures(~ Potential.contaminant == "")
-
-QRICpeptidesfiltered <- QRICpeptides %>% 
-    filterFeatures(~ Reverse == "") %>%
-    filterFeatures(~ Potential.contaminant == "")
-
-```
-
-## Removing unnecessary features
-We can retain only rowDatanames of interest. To do this we can use the 
-`QFeatures::selectRowData` function.
-```{r QFeatures-selectRowData}
- 
-rowDataNames(QWCLpeptidesfiltered)[["peptides"]] %>% length() 
-rowDataNames(QRICpeptidesfiltered)[["peptides"]] %>% length() 
- 
-rowvars <- c("Sequence", "Proteins", "Leading.razor.protein")
-QWCLpeptidesfiltered_clean <- selectRowData(QWCLpeptidesfiltered, rowvars)
-QRICpeptidesfiltered_clean <- selectRowData(QRICpeptidesfiltered, rowvars)
-
-rowDataNames(QWCLpeptidesfiltered_clean)[["peptides"]] %>% length() 
-rowDataNames(QRICpeptidesfiltered_clean)[["peptides"]] %>% length() 
-```
-
 # Annotation data overview
 
 `RICdata` package also contains a reduced version of data contained in [ProtFeatures](https://www.huber.embl.de/users/befische/RBDmap/Rpackage/RBDmapHeLa.pdf)

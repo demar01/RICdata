@@ -27,7 +27,7 @@ Molecular Cell  2019 Apr 4;74:196-211.e11
 WCLpeptides.raw
 }
 \value{
-A data.frame.
+A data.frame
 }
 \description{
 The dataset contains the peptide.txt output file from

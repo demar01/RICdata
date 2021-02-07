@@ -14,16 +14,28 @@
 #'   \item{Intensity M  + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the medium label partner.}
 #'   \item{Intensity H  + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the heavy label partner.}
 #' }
-#' @return A data.frame.
-#' @import QFeatures
-#' @import tidyverse
-#' @import magrittr
+#' @return A data.frame
 #' @source Garcia-Moreno et al 2019.
 #' System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection.
 #' Molecular Cell  2019 Apr 4;74:196-211.e11
 #' \href{https://pubmed.ncbi.nlm.nih.gov/30799147/}{10.1016/j.molcel.2019.01.017}.
 #'
 "WCLpeptides.raw"
+
+#' QWCLpeptidesfiltered_clean
+#'
+#' QFeatures containing 1 assays with 24594 rows and 9 columns.
+#'
+#' @docType data
+#' @keywords datasets
+#' @name QWCLpeptidesfiltered_clean
+#' @usage data(QWCLpeptidesfiltered_clean)
+#'
+#' @references
+#'
+#' Garcia-Moreno et al. System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection. Molecular Cell  2019 Apr 4;74:196-211.e11
+#'
+NULL
 
 #' RNA-bound proteomes of a SILAC experiment of SINV-infected cells
 #' during a timecourse experiment.
@@ -48,6 +60,21 @@
 #'
 "RICpeptides.raw"
 
+#' QRICpeptidesfiltered_clean
+#'
+#' QFeatures containing 1 assays with 6581 rows and 9 columns.
+#'
+#' @docType data
+#' @keywords datasets
+#' @name QRICpeptidesfiltered_clean
+#' @usage data(QRICpeptidesfiltered_clean)
+#'
+#' @references
+#'
+#' Garcia-Moreno et al. System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection. Molecular Cell  2019 Apr 4;74:196-211.e11
+#'
+NULL
+
 #' ENSG annotation with GO categories including GO.BP, GO.CC , GO.MF and
 #' reactome
 #'
@@ -61,7 +88,6 @@
 #' }
 #' @return A character.
 #' @source mRNAinteractomeHeLa
-#' @import Biostrings
 #'
 "ENSG2category"
 
