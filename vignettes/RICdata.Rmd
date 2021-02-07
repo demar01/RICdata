@@ -27,22 +27,26 @@ suppressPackageStartupMessages({
 
 # Introduction
 
-`RICdata` (data from RNA interaction capture experiments) is a data package with
-peptide information extracted from _PRIDE_ [PXD009789](https://www.ebi.ac.uk/pride/archive/projects/PXD009789)  for 9 oligo DT capture and total cell lysate samples originated from mass 
+`RICdata` is a data package containing the data to analyse RNA interaction 
+capture from the manuscript titled: Global analysis of RNA-binding protein 
+dynamics by comparative and enhanced RNA interactome capture. This paper was 
+published in Nature Protocols 16,27–60(2021).Peptide information extracted from
+_PRIDE_ [PXD009789](https://www.ebi.ac.uk/pride/archive/projects/PXD009789).A 
+total of 9 oligo DT capture and total cell lysate samples originated from mass 
 spectrometry proteomics SILAC quantitative experiments [@Garcia-Moreno:2019].
-The package also contains a reduced version of ProtFeatures of [ProtFeatures](https://www.huber.embl.de/users/befische/RBDmap/Rpackage/RBDmapHeLa.pdf)
-[@Castello:2016].
-`miniProtFeatures` which contains the sequence information of the proteins. 
-miniProtFeature is a list with the following objects.
+The package also contains a reduced version of data contained in [ProtFeatures](https://www.huber.embl.de/users/befische/RBDmap/Rpackage/RBDmapHeLa.pdf)
+[@Castello:2016]. This is  called `miniProtFeatures` and contains the sequence 
+information of the proteins. 
+miniProtFeature is a list with the following objects:
+
 - _ProtSeq_  a AAStringSet object of length 69025 with protein sequences.
 - _GeneName_ a character vector with ENSEMBL gene id.
 - _Symbol_ a named character vector with ENSEMBL gene symbols.
-In addition the GO annotation as provided [here](https://www.huber.embl.de/users/befische/mRNAinteractome/Rpackage/index.html)
-is included as `ENSG2category`. 
-Index maps all amino acids 3-mers to proteins is provided as `ENSG2category`.
-It is used by the function `mapPeptides` to reverse map peptides on
-a protein sequence database.
-All these data are required to run functions in `RIC` package.
+GO annotation provided [here](https://www.huber.embl.de/users/befische/mRNAinteractome/Rpackage/index.html)is included as `ENSG2category` object. 
+Index maps for all amino acids 4-mers to proteins is provided as `Index` object, 
+and is used by the function `mapPeptides` included in RIC` package to reverse
+peptides on a protein sequence database. All these data are required to run 
+functions in `RIC` package to analyse RNA interaction capture data.
 
 # Session Info
 

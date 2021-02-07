@@ -13,10 +13,15 @@ Authors@R:
            role = "aut",
            email = "nishuai@yahoo.com")
     )
-Description: Mass-spectrometry based RNA bound proteins captured by RNA oligo dT 
-      experiment as well as lysates of cells infected by Sindbis virus in a time
-	     course  infection experiment from Garcia-Moreno et al. 2019. Data is used
-	     for examples in other packages.
+Description: RICdata is a data package containing the data to analyse RNA 
+            interaction capturefrom the manuscript titled: Global analysis of 
+            RNA-binding protein dynamics by comparative and enhanced RNA 
+            interactome capture. This paper was published in Nature Protocols 
+            16,27–60(2021). The data objects of thisi package have been processed
+            and peptide data was downloaded from PRIDE under the accession
+            identifiers PXD009789. The data contained in this package are 
+            required to run functions in `RIC` package which contains the code
+            used to analyse RNA interaction capture data.
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
@@ -26,5 +31,5 @@ Suggests:
     testthat (>= 3.0.0),
     covr
 Config/testthat/edition: 3
-biocViews: ExperimentData, Homo_sapiens_Data, MassSpectrometryData  
+biocViews: ExperimentData, Homo_sapiens_Data, MassSpectrometryData, SequencingData
 BugReports: https://github.com/demar01/RICdata/issues
