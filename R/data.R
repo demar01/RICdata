@@ -15,6 +15,9 @@
 #'   \item{Intensity H  + M_4_18/18_M_4/4_18_M exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the heavy label partner.}
 #' }
 #' @return A data.frame.
+#' @import QFeatures
+#' @import tidyverse
+#' @import magrittr
 #' @source Garcia-Moreno et al 2019.
 #' System-wide Profiling of RNA-Binding Proteins Uncovers Key Regulators of Virus Infection.
 #' Molecular Cell  2019 Apr 4;74:196-211.e11
@@ -58,6 +61,7 @@
 #' }
 #' @return A character.
 #' @source mRNAinteractomeHeLa
+#' @import Biostrings
 #'
 "ENSG2category"
 

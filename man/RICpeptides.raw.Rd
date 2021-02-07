@@ -8,12 +8,12 @@ during a timecourse experiment.}
 \format{
 A dataframe with 6909 rows and 151 variables:
 \describe{
-  \item{Sequence}{The identified AA sequence of the peptide.}
-  \item{Length}{The length of the sequence stored in the column 'Sequence'.}
-  \item{Proteins}{Identifiers of proteins this site is associated with..}
-  \item{“Intensity L ” + A/B/C exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the light label partner.}
-  \item{“Intensity M ” + A/B/C exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the medium label partner.}
-  \item{“Intensity H ” + A/B/C exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the heavy label partner.}
+\item{Sequence}{The identified AA sequence of the peptide.}
+\item{Length}{The length of the sequence stored in the column 'Sequence'.}
+\item{Proteins}{Identifiers of proteins this site is associated with..}
+\item{“Intensity L ” + A/B/C exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the light label partner.}
+\item{“Intensity M ” + A/B/C exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the medium label partner.}
+\item{“Intensity H ” + A/B/C exp}{Summed up eXtracted Ion Current (XIC) of the isotopic cluster linked to the heavy label partner.}
 }
 }
 \source{

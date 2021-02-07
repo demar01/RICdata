@@ -7,9 +7,9 @@
 \format{
 An list with 3 entries:
 \describe{
-  \item{1}{AAStringSet of length 69025 with protein sequence information}
-  \item{2}{ENSG to gene annotation}
-  \item{3}{Gene name to emtry annotation}
+\item{1}{AAStringSet of length 69025 with protein sequence information}
+\item{2}{ENSG to gene annotation}
+\item{3}{Gene name to emtry annotation}
 }
 }
 \source{
